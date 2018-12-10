@@ -9,13 +9,16 @@ import { LoginComponent } from './login/login.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ProjectsComponent } from './projects/projects.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProjectService} from './_service/project.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    ProjectsComponent,
     LoginComponent
   ],
   imports: [
@@ -27,7 +30,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+      ProjectService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
