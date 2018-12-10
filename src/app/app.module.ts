@@ -13,8 +13,10 @@ import { ProjectsComponent } from './projects/projects.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './_service/project.service';
+
 import { MyProjectsComponent } from './projects/my-projects/my-projects.component';
 import {UserService} from './_service/user.service';
+import { ProjectFormComponent } from './projects/project-form/project-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {UserService} from './_service/user.service';
     ProjectsComponent,
     LoginComponent,
     MyProjectsComponent
+    ProjectFormComponent
   ],
   imports: [
     BrowserModule,
