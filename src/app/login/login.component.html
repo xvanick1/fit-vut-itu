@@ -1,20 +1,24 @@
+<div class="body">
 <div class="container">
-    <div class="col-md-4 offset-md-4">
+    <div class="col-md-6 offset-md-3">
         <img id="login-logo" src="assets/img/logo_full.png" alt="">
-        <div class="row">
+        <div class="col" align="center">
+            <h3>Přihlášení</h3>
             <form>
                 <div class="form-group input-group">
                     <div class="input-group-prepend"> <span class="input-group-text" id="login"><i class="far fa-user"></i></span></div>
                     <!--<label for="vutLogin">VUT Login</label>-->
                     <input type="text" class="form-control" id="vutLogin"
-                           placeholder="VUT Login" aria-describedby="login">
+                           placeholder="VUT Login" aria-describedby="login" [formControl]="login">
                 </div>
-                <div class="form-group">
-                    <label for="password">Heslo</label>
+                <div class="form-group input-group">
+                    <!--<label for="password">Heslo</label>-->
+                    <div class="input-group-prepend"> <span class="input-group-text" id="psswd"><i class="fas fa-key"></i></span></div>
                     <input type="password" class="form-control" id="password" placeholder="Heslo">
                 </div>
                 <button type="submit" class="btn btn-success">Přihlásit</button>
             </form>
         </div>
     </div>
+</div>
 </div>
