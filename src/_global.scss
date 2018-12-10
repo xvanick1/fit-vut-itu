@@ -6,11 +6,21 @@
 $fa-font-path : '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
+@import "~@fortawesome/fontawesome-free/scss/solid";
 
 @include media-breakpoint-up(lg) {
   :host .container-fluid {
     margin-right: 100px;
     margin-left: 100px;
     width: auto;
+  }
+}
+
+:host input.ng-invalid.ng-touched {
+  border-color: $danger;
+
+  &:focus {
+    border-color: $danger;
+    box-shadow: 0 0 0 $input-focus-width rgba($danger, .25);
   }
 }

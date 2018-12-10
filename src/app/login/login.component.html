@@ -2,19 +2,25 @@
 <div class="container">
     <div class="col-md-6 offset-md-3">
         <img id="login-logo" src="assets/img/logo_full.png" alt="">
-        <div class="col" align="center">
+        <div class="col text-center" >
             <h3>Přihlášení</h3>
-            <form>
-                <div class="form-group input-group">
-                    <div class="input-group-prepend"> <span class="input-group-text" id="login"><i class="far fa-user"></i></span></div>
-                    <!--<label for="vutLogin">VUT Login</label>-->
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="form-group">
+                    <div class="input-group">
+                    <div class="input-group-prepend"> <span class="input-group-text" id="login"><i class="fas fa-user"></i></span></div>
                     <input type="text" class="form-control" id="vutLogin"
-                           placeholder="VUT Login" aria-describedby="login" >
+                           placeholder="VUT Login" aria-describedby="login" required
+                           [(ngModel)]="user.login" name="login" #login="ngModel">
+                    </div>
+                    <div *ngIf="login.invalid && (login.dirty || login.touched)"
+                         class="text-danger text-left">
+                        Zadejte VUT Login.
+                    </div>
                 </div>
                 <div class="form-group input-group">
                     <!--<label for="password">Heslo</label>-->
                     <div class="input-group-prepend"> <span class="input-group-text" id="psswd"><i class="fas fa-key"></i></span></div>
-                    <input type="password" class="form-control" id="password" placeholder="Heslo">
+                    <input type="password" class="form-control" id="password" placeholder="Heslo" required>
                 </div>
                 <button type="submit" class="btn btn-success">Přihlásit</button>
             </form>
