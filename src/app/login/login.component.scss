@@ -1,0 +1,14 @@
+@import "../../global";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/input-group";
+@import "~@fortawesome/fontawesome-free/css/fontawesome.min.css";
+
+#login-logo{
+  width: 100%;
+}
+
+.row{
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+}
