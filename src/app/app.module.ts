@@ -14,6 +14,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './_service/project.service';
 import { MyProjectsComponent } from './projects/my-projects/my-projects.component';
+import {UserService} from './_service/user.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MyProjectsComponent } from './projects/my-projects/my-projects.componen
     ReactiveFormsModule
   ],
   providers: [
-      ProjectService
+      ProjectService,
+      UserService
   ],
   bootstrap: [AppComponent]
 })
