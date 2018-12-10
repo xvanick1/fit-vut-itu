@@ -34,15 +34,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                <tr *ngFor="let project of projects">
+                    <td>{{project.id}}</td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.category.name}}</td>
+                    <td>{{project.author.name}}</td>
+                    <td>???</td>
+                    <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
+                    <td></td>
                 </tr>
                 </tbody>
             </table>

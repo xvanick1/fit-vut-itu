@@ -12,6 +12,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProjectsComponent } from './projects/projects.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProjectService} from './_service/project.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+      ProjectService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
