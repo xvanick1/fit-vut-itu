@@ -5,4 +5,14 @@
 
 $fa-font-path : '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
+//@import '~@fortawesome/fontawesome-free/scss/regular';
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+:host input.ng-invalid.ng-touched {
+  border-color: $danger;
+
+  &:focus {
+    border-color: $danger;
+    box-shadow: 0 0 0 $input-focus-width rgba($danger, .25);
+  }
+}

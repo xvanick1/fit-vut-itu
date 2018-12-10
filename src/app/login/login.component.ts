@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import {FormControl} from '@angular/forms';
+import {User} from '../user';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  // login = new FormControl('');
+  user: User;
 
   constructor() { }
 
   ngOnInit() {
+      this.user = new User();
+  }
+
+  onSubmit() {
   }
 
 }
