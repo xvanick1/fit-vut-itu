@@ -1,0 +1,29 @@
+@import "../../global";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/input-group";
+
+
+.body {
+
+  padding: 40px;
+  background-color: lightgray;
+  width: 100%;
+  .container {
+
+    #login-logo {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .col {
+      background-color: white;
+      border-radius: 5px;
+      padding: 45px;
+    }
+
+    button {
+      width: 100%;
+    }
+
+  }
+}
