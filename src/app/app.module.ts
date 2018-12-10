@@ -13,13 +13,15 @@ import { ProjectsComponent } from './projects/projects.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './_service/project.service';
+import { MyProjectsComponent } from './projects/my-projects/my-projects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProjectsComponent,
-    LoginComponent
+    LoginComponent,
+    MyProjectsComponent
   ],
   imports: [
     BrowserModule,
