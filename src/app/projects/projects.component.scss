@@ -4,7 +4,7 @@
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
-
+@import "~bootstrap/scss/pagination";
 
 :host .button-right {
   margin-left: auto;
@@ -21,4 +21,12 @@
   @include border-right-radius(0);
   border-right: 0;
   border-color: $secondary;
+}
+
+@include media-breakpoint-down(sm) {
+  :host .button-right {
+    float: right;
+    margin-top: -87px;
+  }
+
 }
