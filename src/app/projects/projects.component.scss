@@ -1,0 +1,24 @@
+@import "../../global";
+
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+
+
+:host .button-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+:host .search-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+:host .search-input-button-group {
+  margin-right: 0;
+  @include border-right-radius(0);
+  border-right: 0;
+  border-color: $secondary;
+}
