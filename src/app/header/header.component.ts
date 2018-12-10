@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {User} from '../user';
 import {UserService} from '../_service/user.service';
@@ -8,7 +8,7 @@ import {UserService} from '../_service/user.service';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
     loggedUser: User;
 
     constructor(private router: Router,
@@ -16,6 +16,9 @@ export class HeaderComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+    }
+
+    ngDoCheck() {
         this.loggedUser = this.userService.userArray.find(user => user.login === localStorage.getItem('login'));
     }
 
