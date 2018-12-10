@@ -24,7 +24,7 @@ import { ProjectFormComponent } from './projects/project-form/project-form.compo
     HeaderComponent,
     ProjectsComponent,
     LoginComponent,
-    MyProjectsComponent
+    MyProjectsComponent,
     ProjectFormComponent
   ],
   imports: [
