@@ -1,29 +1,30 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand">
-        <img src="assets/img/logo.png" class="logo">
-      </a>
-      <span class="navbar-brand">Angular + Bootstrap</span>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">
-        Link <span class="sr-only">(current)</span>
-      </a></li>
-      <li><a href="#">Link</a></li>
-      <li class="dropdown" dropdown> <!-- {1} -->
-        <a dropdownToggle role="button"> <!-- {2} -->
-          Dropdown <span class="caret"></span></a>
-        <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">One more separated link</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><img src="/assets/img/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My projects</a>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User name
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+        </div>
+    </div>
 </nav>
