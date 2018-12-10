@@ -16,7 +16,13 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit() {
       this.projects = this.projectService.projectsArray;
-      console.log(this.projects);
+      for (let project of this.projects) {
+          project._positionsCount = 0;
+          project._registredPositionsCount = 0;
+          for (const position of project.positions) {
+              project._positionsCount += position.capacity;
+          }
+      }
   }
 
 }

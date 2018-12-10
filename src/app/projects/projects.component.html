@@ -27,7 +27,7 @@
                     <th scope="col">Název</th>
                     <th scope="col">Kategorie</th>
                     <th scope="col">Autor</th>
-                    <th scope="col">Členové</th>
+                    <th scope="col" class="text-right">Členové</th>
                     <th scope="col">Začátek</th>
                     <th scope="col">Konec</th>
                     <th scope="col"></th>
@@ -39,7 +39,7 @@
                     <td>{{project.name}}</td>
                     <td>{{project.category.name}}</td>
                     <td>{{project.author.name}}</td>
-                    <td>???</td>
+                    <td class="text-right">{{project._registredPositionsCount}}/{{project._positionsCount}}</td>
                     <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
                     <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
                     <td></td>

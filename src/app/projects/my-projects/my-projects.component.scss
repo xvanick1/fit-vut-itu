@@ -1,0 +1,8 @@
+@import "../../../global";
+
+@import "~bootstrap/scss/tables";
+
+:host .button-right {
+  margin-left: auto;
+  margin-right: 0;
+}
