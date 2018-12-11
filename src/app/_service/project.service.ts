@@ -28,7 +28,7 @@ export class ProjectService {
       category2.id = 2;
       this.catageryArray.push(category2);
 
-
+      let posID = 1;
       for (; this.projectID < 10; this.projectID++) {
           let project = new Project();
           project.id = this.projectID;
@@ -41,14 +41,15 @@ export class ProjectService {
               project.isPaid = true;
               project.author = this.userService.userArray.find(user => user.login === '196191');
               let position = new Position();
+              position.id = posID++;
               position.capacity = 5;
               position.name = 'Programátor';
               position.id = 1;
               project.positions.push(position);
           } else if ( this.projectID % 3 === 1) {
-
               project.longTime = true;
               let position = new Position();
+              position.id = posID++;
               position.capacity = 1;
               position.name = 'Název pozice';
               position.id = 1;
@@ -57,6 +58,7 @@ export class ProjectService {
           } else {
               project.category = category2;
               let position = new Position();
+              position.id = posID++;
               position.capacity = 2;
               position.name = 'CAD systémy';
               position.id = 1;

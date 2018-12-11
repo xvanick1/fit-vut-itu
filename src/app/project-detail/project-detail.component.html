@@ -51,7 +51,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item text-primary">Začátek</li>
-                    <li class="breadcrumb-item active">{{project.start}}</li>
+                    <li class="breadcrumb-item active">{{project.start | date: 'yyyy-MM-dd'}}</li>
                 </ol>
             </nav>
         </div>
@@ -59,7 +59,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item text-primary">Konec</li>
-                    <li class="breadcrumb-item active">{{project.end}}</li>
+                    <li class="breadcrumb-item active">{{project.end | date: 'yyyy-MM-dd'}}</li>
                 </ol>
             </nav>
         </div>
@@ -84,10 +84,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let position of project.positions">
-                    <td>{{project.id}}</td>
-                    <td>{{project.position}}</td>
-                    <td>{{project.description}}</td>
-                    <td>???</td>
+                    <td>{{position.id}}</td>
+                    <td>{{position.name}}</td>
+                    <td>{{position.description}}</td>
+                    <td>{{position.capacity}}</td>
                     <td></td>
                 </tr>
                 </tbody>
