@@ -4,7 +4,8 @@ import {ProjectService} from '../../_service/project.service';
 import {UserService} from '../../_service/user.service';
 import {Project} from '../../_model/project';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-edit',
@@ -16,8 +17,9 @@ export class EditComponent extends ProjectFormComponent implements OnInit {
 
     constructor(protected projects: ProjectService,
                 protected userService: UserService,
-                protected route: ActivatedRoute) {
-        super(projects, userService);
+                protected route: ActivatedRoute,
+                protected router: Router) {
+        super(projects, userService, router);
     }
 
     ngOnInit() {
@@ -33,6 +35,8 @@ export class EditComponent extends ProjectFormComponent implements OnInit {
             }
         }
 
+        this.project.start = new Date(moment(this.project.start).format('YYYY-MM-DD'));
+
         console.log(this.project.start);
 
         this.positions = this.project.positions;
@@ -42,7 +46,15 @@ export class EditComponent extends ProjectFormComponent implements OnInit {
                 count: new FormControl('')
             }
         );
+
+        this.id = this.positions.length;
         this.initModal();
+    }
+
+    onSubmit() {
+        console.log(this.projects.projectsArray);
+        this.project.positions = this.positions;
+        this.router.navigate(['projekty']);
     }
 
 }

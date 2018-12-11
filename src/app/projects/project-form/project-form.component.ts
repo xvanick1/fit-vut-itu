@@ -4,6 +4,7 @@ import {Position} from '../../_model/position';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ProjectService} from '../../_service/project.service';
 import {UserService} from '../../_service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-project-form',
@@ -21,7 +22,8 @@ export class ProjectFormComponent implements OnInit {
     protected title: string;
 
     constructor(protected projects: ProjectService,
-                protected userService: UserService) {
+                protected userService: UserService,
+                protected router: Router) {
     }
 
     ngOnInit() {
@@ -52,5 +54,7 @@ export class ProjectFormComponent implements OnInit {
             }
         }
     }
+
+    onSubmit(){}
 
 }
