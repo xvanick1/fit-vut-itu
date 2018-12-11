@@ -61,17 +61,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let project of registredProjects">
-                    <td><a routerLink="/detailprojektu/{{project.id}}">{{project.id}}</a>
-                    <td>{{project.name}}</td>
-                    <td>{{project.category.name}}</td>
-                    <td>{{project.author.name}}</td>
-                    <td class="text-right"></td>
-                    <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
-                    <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
+                <tr>
+                    <td><a href="#">100</a></td>
+                    <td>Vývoj informačního systému</td>
+                    <td>Informační systém</td>
+                    <td>Franta Pepa</td>
+                    <td>Programátor PHP<br>Pozice XYZ</td>
+                    <td>2019-01-01</td>
+                    <td>2019-06-01</td>
                     <td>
-                        <span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
-                        <span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span>
+                        <span class="badge badge-success"data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
                     </td>
                 </tr>
                 </tbody>
