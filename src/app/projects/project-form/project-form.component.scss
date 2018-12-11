@@ -12,6 +12,10 @@
     margin-bottom: 20px;
   }
 
+
+  .card-header{
+    background-color: #e9ecef;
+  }
   .card-body{
     padding: 10px;
     textarea{
@@ -26,13 +30,13 @@
     padding-top: 6px;
     border: 1px solid #ced4da;
     border-radius: 0 0.25rem 0.25rem 0;
-    width: 83%;
 
     .form-check-inline{
       margin-left: 15px;
       margin-right: 20px;
     }
   }
+
 
   #addPos{
     margin-top: 30px;

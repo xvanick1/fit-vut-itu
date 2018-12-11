@@ -19,6 +19,8 @@ import { MyProjectsComponent } from './projects/my-projects/my-projects.componen
 import {UserService} from './_service/user.service';
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
 import { HomeComponent } from './home/home.component';
+import { CreateComponent } from './projects/create/create.component';
+import { EditComponent } from './projects/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HomeComponent } from './home/home.component';
     ProjectDetailComponent,
     MyProjectsComponent,
     ProjectFormComponent,
-    HomeComponent
+    HomeComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
