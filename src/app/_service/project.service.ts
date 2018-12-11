@@ -8,27 +8,29 @@ export class ProjectService {
 
 
   public projectsArray: Project[];
+  public projectID: number;
 
   constructor(
       private userService: UserService
   ) {
       this.projectsArray = [];
+      this.projectID = 1;
 
       const category = new Category();
       category.name = 'Neco';
       category.id = 1;
 
-      for (let i = 1; i < 10; i++) {
+      for (; this.projectID < 10; this.projectID++) {
           let project = new Project();
-          project.id = i;
-          project.name = 'Testovaci projekt ' + i;
+          project.id = this.projectID;
+          project.name = 'Testovaci projekt ' + this.projectID;
           project.start = new Date();
           project.end = new Date();
           project.category = category;
-          if (i % 3 === 0) {
+          if (this.projectID % 3 === 0) {
               project.isPaid = true;
               project.author = this.userService.userArray.find(user => user.login === '196191');
-          } else if ( i % 3 === 1) {
+          } else if ( this.projectID % 3 === 1) {
               project.longTime = true;
               project.author = this.userService.userArray.find(user => user.login === '196192');
           } else {
