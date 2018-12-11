@@ -9,12 +9,14 @@ export class ProjectService {
 
   public projectsArray: Project[];
   public catageryArray: Category[];
+  public projectID: number;
 
   constructor(
       private userService: UserService
   ) {
       this.projectsArray = [];
       this.catageryArray = [];
+      this.projectID = 1;
 
       let category = new Category();
       category.name = 'Informační systém';
@@ -26,22 +28,24 @@ export class ProjectService {
       category2.id = 2;
       this.catageryArray.push(category2);
 
-      for (let i = 1; i < 6; i++) {
+
+      for (; this.projectID < 10; this.projectID++) {
           let project = new Project();
-          project.id = i;
-          project.name = 'Testovaci projekt ' + i;
+          project.id = this.projectID;
+          project.name = 'Testovaci projekt ' + this.projectID;
           project.start = new Date();
           project.end = new Date();
           project.category = category;
           project.positions = [];
-          if (i % 3 === 0) {
+          if (this.projectID % 3 === 0) {
               project.isPaid = true;
               project.author = this.userService.userArray.find(user => user.login === '196191');
               let position = new Position();
               position.capacity = 5;
               position.name = 'Programátor';
               project.positions.push(position);
-          } else if ( i % 3 === 1) {
+          } else if ( this.projectID % 3 === 1) {
+
               project.longTime = true;
               let position = new Position();
               position.capacity = 1;
