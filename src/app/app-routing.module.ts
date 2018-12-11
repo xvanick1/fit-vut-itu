@@ -5,6 +5,7 @@ import {ProjectsComponent} from './projects/projects.component';
 import {MyProjectsComponent} from './projects/my-projects/my-projects.component';
 import {ProjectFormComponent} from './projects/project-form/project-form.component';
 import {ProjectDetailComponent} from './project-detail/project-detail.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
     {path: 'moje-projekty', component: MyProjectsComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'vytvorit', component: ProjectFormComponent},
     {path: 'detailprojektu/:id', component: ProjectDetailComponent},
+    {path: 'home', component: HomeComponent}
 ];
 
 @NgModule({

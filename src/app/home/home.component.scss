@@ -1,0 +1,43 @@
+@import "../../global";
+
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/pagination";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/tooltip";
+
+:host .button-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+:host .search-center {
+  margin-left: auto;
+  margin-right: auto;
+
+  .form-group label {
+    margin-bottom: 0;
+  }
+}
+
+:host .search-input-button-group {
+  margin-right: 0;
+  @include border-right-radius(0);
+  border-right: 0;
+  border-color: $secondary;
+
+  &[disabled] {
+    opacity: 0.65;
+    background-color: transparent;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  :host .button-right {
+    float: right;
+    margin-top: -87px;
+  }
+
+}
