@@ -19,6 +19,7 @@
                     <th scope="col">Začátek</th>
                     <th scope="col">Konec</th>
                     <th scope="col"></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,7 @@
                         <span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
                         <span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span>
                     </td>
+                    <td><a routerLink="/editace/{{project.id}}" class="">Upravit</a></td>
                 </tr>
                 </tbody>
             </table>
