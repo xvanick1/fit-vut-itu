@@ -1,19 +1,31 @@
 <div class="container">
     <h1>Založení projektu</h1>
-    <form action="">
+    <form #projectForm="ngForm" (ngSubmit)="create()">
         <div class="row">
             <div class="form-group col-md-8">
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text text-primary">Název projektu</span>
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Název projektu<span
+                            class="text-danger">*</span></span>
                     </div>
-                    <input type="text" class="form-control" name="proj_name" id="proj_name" required>
+                    <input type="text" class="form-control" name="name" id="proj_name" [(ngModel)]="project.name" required>
                 </div>
             </div>
 
-            <div class="form-group col-md-4">
+            <div class="form-group col">
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text text-primary">Kategorie</span></div>
-                    <input type="text" class="form-control" name="proj_category" id="proj_category" required>
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Tagy</span></div>
+                    <div class="tags">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="isPaid" [(ngModel)]="project.isPaid"
+                                   name="isPaid">
+                            <label class="form-check-label" for="isPaid">Placený</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="longTime" [(ngModel)]="project.longTime"
+                                   name="longTime">
+                            <label class="form-check-label" for="longTime">Dlouhodobý</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,22 +33,25 @@
         <div class="row">
             <div class="form-group col">
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text text-primary">Tagy</span></div>
-                    <input type="text" class="form-control" name="proj_tags" id="proj_tags" required>
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Kategorie<span
+                            class="text-danger">*</span></span></div>
+                    <input type="text" class="form-control" name="category" id="proj_category" [(ngModel)]="project.category" required>
                 </div>
             </div>
 
             <div class="form-group col">
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text text-primary">Začátek</span></div>
-                    <input type="date" class="form-control" name="proj_start" id="proj_start" required>
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Začátek<span
+                            class="text-danger">*</span></span></div>
+                    <input type="date" class="form-control" name="start" id="proj_start" [(ngModel)]="project.start" required>
                 </div>
             </div>
 
             <div class="form-group col">
                 <div class="input-group">
-                    <div class="input-group-prepend"><span class="input-group-text text-primary">Konec</span></div>
-                    <input type="date" class="form-control" name="proj_end" id="proj_end" required>
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Konec<span
+                            class="text-danger">*</span></span></div>
+                    <input type="date" class="form-control" name="end" id="proj_end" [(ngModel)]="project.end" required>
                 </div>
             </div>
         </div>
@@ -45,56 +60,76 @@
         <div class="card">
             <h3 class="card-header text-primary">Popis projektu</h3>
             <div class="card-body">
-                <textarea name="" id=""></textarea>
+                <textarea name="description" id="" [(ngModel)]="project.description"></textarea>
             </div>
         </div>
 
-        <button id="addPos" type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addPositionModal">Přidat pozici</button>
-        <table class="table table-striped">
-            <thead>
+        <button id="addPos" type="button" class="btn btn-primary float-right" data-toggle="modal"
+                data-target="#addPositionModal">Přidat pozici
+        </button>
+        <table class="table table-bordered">
+            <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Pozice</th>
                 <th>Popis</th>
                 <th>Počet</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
-
+            <tr *ngFor="let pos of positions">
+                <td>{{pos.id}}</td>
+                <td>{{pos.name}}</td>
+                <td>{{pos.description}}</td>
+                <td>0/{{pos.capacity}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deletePosition(pos.id)"><i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
             </tbody>
         </table>
 
         <div>
-            <div class="modal fade" id="addPositionModal" tabindex="-1" role="dialog" aria-labelledby="addPositionModalLabel"
+            <div class="modal fade" id="addPositionModal" tabindex="-1" role="dialog"
+                 aria-labelledby="addPositionModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3 class="modal-title" id="addPositionModalLabel">Nová pozice</h3>
                         </div>
-                        <div class="modal-body">
-                            <form>
+                        <form (ngSubmit)="addPosition()" [formGroup]="positionForm">
+                            <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="position" class="col-form-label">Pozice:</label>
-                                    <input type="text" class="form-control" id="position">
+                                    <label for="position" class="col-form-label">Pozice<span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="position" formControlName="position"
+                                           name="name" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description" class="col-form-label">Popis:</label>
-                                    <textarea maxlength="100" class="form-control" id="description"></textarea>
+                                    <label for="description" class="col-form-label">Popis pozice</label>
+                                    <textarea maxlength="100" class="form-control" id="description"
+                                              formControlName="description"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="count">Požadovaný počet:</label>
-                                    <input type="number" class="form-control" min="0" id="count">
+                                    <label for="count">Požadovaný počet lidí<span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" min="1" value="1" id="count"
+                                           name="capacity" formControlName="count" required>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrušit</button>
-                            <button type="button" class="btn btn-primary">Přidat</button>
-                        </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrušit</button>
+                                <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addPositionModal" [disabled]="!positionForm.valid">Přidat
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        <button type="submit" class="btn btn-success float-right">Založit projekt</button>
     </form>
 </div>
