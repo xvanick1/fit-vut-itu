@@ -43,7 +43,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item text-primary">Tagy</li>
-                    <li class="breadcrumb-item active"><span class="badge badge-success" tooltip="Finančně ohodnoceno">€</span> <span class="badge badge-info" tooltip="Možnost uznání jako semestrální projekt">Bc</span></li>
+                    <li class="breadcrumb-item active"><span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span><span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span></li>
                 </ol>
             </nav>
         </div>
@@ -74,21 +74,26 @@
         <div class="col table-responsive-md">
             <table class="table table-bordered">
                 <thead class="thead-light">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Pozice</th>
-                    <th scope="col">Popis</th>
-                    <th scope="col">Členové</th>
-                    <th scope="col"></th>
+                <tr class="d-flex">
+                    <th class="col-1" scope="col">#</th>
+                    <th class="col-3" scope="col">Pozice</th>
+                    <th class="col" scope="col">Popis</th>
+                    <th class="col-1" scope="col">Členové</th>
+                    <th class="col-2" scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let position of project.positions">
-                    <td>{{position.id}}</td>
-                    <td>{{position.name}}</td>
-                    <td>{{position.description}}</td>
-                    <td>{{position.capacity}}</td>
-                    <td></td>
+                <tr class="d-flex" *ngFor="let position of project.positions">
+                    <td class="col-1">{{position.id}}</td>
+                    <td class="col-3">{{position.name}}</td>
+                    <td class="col">{{position.description}}</td>
+                    <td class="col-1">{{position.capacity}}</td>
+                    <!--<td><button *ngIf="project.id" type="button" class="btn btn-success btn-sm">Přihlásit</button></td>-->
+                    <td class="col-2"><button type="button" class="btn btn-warning btn-sm" [ngClass]="{'btn-add': !clicked, 'btn-remove': clicked}" (click)="clicked = !clicked">
+                        {{clicked ? 'Přihlásit' : 'Odhlásit'}}
+                        <i class="fa" [ngClass]="{'fa-plus-circle': clicked, 'fa-minus-circle': !clicked}"></i>
+                    </button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
