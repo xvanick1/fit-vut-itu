@@ -21,6 +21,7 @@ import { ProjectFormComponent } from './projects/project-form/project-form.compo
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './projects/create/create.component';
 import { EditComponent } from './projects/edit/edit.component';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditComponent } from './projects/edit/edit.component';
   ],
   providers: [
       ProjectService,
-      UserService
+      UserService,
+      DatePipe,
   ],
   bootstrap: [AppComponent]
 })
