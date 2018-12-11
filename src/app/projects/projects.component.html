@@ -9,7 +9,7 @@
                     <input [formControl]="searchInput" class="form-control search-input-button-group" type="search" placeholder="Vyhledávání" aria-label="Search">
                     <button type="button" [disabled]="!searchInput.valid" class="btn btn-outline-secondary" (click)="onSearchButton()">Vyhledat</button>
                     <div class="btn-group {{extendedSearchEnabled ? 'dropup' : ''}}" role="group">
-                        <button type="button" (click)="extendedSearch()" class="btn btn-outline-secondary dropdown-toggle"></button>
+                        <button type="button" (click)="extendedSearch()" class="btn btn-outline-secondary dropdown-toggle">Pokročilé</button>
                     </div>
                 </div>
             </form>

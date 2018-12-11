@@ -11,7 +11,6 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProjectDetailComponent implements OnInit {
   positions: Position[];
-  projects: Project[];
   project: Project;
 
   constructor(
@@ -21,15 +20,17 @@ export class ProjectDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.projects = this.projectService.projectsArray;
+    let projectID: number;
     this.route.params.subscribe(params => {
-      this.project.id = +params['id'];
+      projectID = +params['id'];
     });
 
 
-    for (let project of this.projects) {
-      if (project.id === 2) {
+    // OR: this.project = this.projectService.projectsArray.find(proj => proj.id === projectID);
+    for (let project of this.projectService.projectsArray) {
+      if (project.id === projectID) {
         this.project = project;
+        break;
       }
     }
 
