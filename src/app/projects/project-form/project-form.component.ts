@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Project} from '../../_model/project';
 import {Position} from '../../_model/position';
 import {FormControl, FormGroup} from '@angular/forms';
-import {ProjectsComponent} from '../projects.component';
 import {ProjectService} from '../../_service/project.service';
 import {UserService} from '../../_service/user.service';
 
@@ -13,30 +12,22 @@ import {UserService} from '../../_service/user.service';
 })
 export class ProjectFormComponent implements OnInit {
 
-    project: Project;
-    position: Position;
-    positions: Position[];
-    id: number;
-    positionForm: FormGroup;
+    protected project: Project;
+    protected position: Position;
+    protected positions: Position[];
+    protected id: number;
+    protected positionForm: FormGroup;
 
-    constructor(private projects: ProjectService,
-                private userService: UserService) {
+    protected title: string;
+
+    constructor(protected projects: ProjectService,
+                protected userService: UserService) {
     }
 
     ngOnInit() {
-        this.id = 1;
-        this.project = new Project();
-        this.project.isPaid = false;
-        this.project.longTime = false;
-        this.positions = [];
-        this.positionForm = new FormGroup({
-                position: new FormControl(''),
-                description: new FormControl(''),
-                count: new FormControl('')
-            }
-        );
-        this.initModal();
+
     }
+
 
     initModal() {
         this.position = new Position();
@@ -60,13 +51,6 @@ export class ProjectFormComponent implements OnInit {
                 this.positions.splice(i, 1);
             }
         }
-    }
-
-    create() {
-        console.log(this.projects.projectsArray);
-        this.project.positions = this.positions;
-        this.project.author = this.userService.userArray.find(user => user.login === localStorage.getItem('login'));
-        this.projects.projectsArray.push(this.project);
     }
 
 }
