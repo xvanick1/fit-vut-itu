@@ -1,0 +1,14 @@
+@import "../../global";
+
+@import "~bootstrap/scss/button-group";
+@import "~bootstrap/scss/dropdown";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/forms";
+
+@include media-breakpoint-down(sm) {
+  :host .button-right {
+    float: right;
+    margin-top: -87px;
+  }
+
+}
