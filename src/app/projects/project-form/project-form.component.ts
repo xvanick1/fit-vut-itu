@@ -55,7 +55,7 @@ export class ProjectFormComponent implements OnInit {
 
     deletePosition(id: number) {
         console.log(id);
-        for (let i = 0; i < this.positions.length - 1; i++) {
+        for (let i = 0; i < this.positions.length; i++) {
             if (this.positions[i].id === id) {
                 this.positions.splice(i, 1);
             }
