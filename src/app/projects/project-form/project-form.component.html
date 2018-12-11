@@ -77,7 +77,6 @@
         <table class="table table-bordered">
             <thead class="thead-light">
             <tr>
-                <th class="id">#</th>
                 <th class="position">Pozice</th>
                 <th class="description">Popis</th>
                 <th class="count">Počet</th>
@@ -86,7 +85,6 @@
             </thead>
             <tbody>
             <tr *ngFor="let pos of positions">
-                <td class="id">{{pos.id}}</td>
                 <td class="position">{{pos.name}}</td>
                 <td class="description">{{pos.description}}</td>
                 <td class="count">0/{{pos.capacity}}</td>
