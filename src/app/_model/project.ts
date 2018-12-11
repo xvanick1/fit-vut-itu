@@ -9,6 +9,9 @@ export class Project {
     author: User;
     start: Date;
     end: Date;
+    description: string;
+    isPaid: boolean;
+    longTime: boolean;
     positions: Position[];
     _positionsCount: number;
     _registredPositionsCount: number;
