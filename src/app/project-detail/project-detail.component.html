@@ -51,7 +51,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item text-primary">Začátek</li>
-                    <li class="breadcrumb-item active">{{project.start}}</li>
+                    <li class="breadcrumb-item active">{{project.start | date: 'yyyy-MM-dd'}}</li>
                 </ol>
             </nav>
         </div>
@@ -59,7 +59,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item text-primary">Konec</li>
-                    <li class="breadcrumb-item active">{{project.end}}</li>
+                    <li class="breadcrumb-item active">{{project.end | date: 'yyyy-MM-dd'}}</li>
                 </ol>
             </nav>
         </div>
