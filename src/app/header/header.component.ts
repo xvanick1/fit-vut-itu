@@ -11,7 +11,7 @@ import {UserService} from '../_service/user.service';
 export class HeaderComponent implements OnInit, DoCheck {
     loggedUser: User;
 
-    constructor(private router: Router,
+    constructor(public router: Router,
                 private userService: UserService
     ) { }
 

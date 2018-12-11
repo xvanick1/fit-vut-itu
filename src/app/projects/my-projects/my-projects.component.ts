@@ -9,7 +9,7 @@ declare var $: any;
   templateUrl: './my-projects.component.html',
   styleUrls: ['./my-projects.component.scss']
 })
-export class MyProjectsComponent implements OnInit, DoCheck {
+export class MyProjectsComponent implements OnInit {
     myProjects: Project[];
 
     constructor(
@@ -28,12 +28,9 @@ export class MyProjectsComponent implements OnInit, DoCheck {
                 this.myProjects.push(project);
             }
         }
-    }
 
-    ngDoCheck(): void {
         $(function () {
             $('[data-toggle="tooltip"]').tooltip();
         });
     }
-
 }

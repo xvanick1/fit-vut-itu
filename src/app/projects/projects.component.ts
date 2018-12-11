@@ -11,7 +11,7 @@ declare var $: any;
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit, DoCheck {
+export class ProjectsComponent implements OnInit {
   projects: Project[];
   searchInput: FormControl;
   extendedSearchEnabled: boolean;
@@ -46,6 +46,10 @@ export class ProjectsComponent implements OnInit, DoCheck {
       }
 
       this.onChangesSearch();
+
+      $(function () {
+          $('[data-toggle="tooltip"]').tooltip();
+      });
   }
 
   isEmpty(value: string): boolean {
@@ -144,11 +148,4 @@ export class ProjectsComponent implements OnInit, DoCheck {
       }
       this.projects = searchedProjects;
   }
-
-    ngDoCheck(): void {
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
-    }
-
 }
