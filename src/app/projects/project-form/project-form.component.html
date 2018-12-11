@@ -1,11 +1,11 @@
 <div class="container">
-    <h1>Založení projektu</h1>
-    <form #projectForm="ngForm" (ngSubmit)="create()">
+    <h1>{{title}}</h1>
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="form-group col-md-8">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text text-primary">Název projektu<span
-                            class="text-danger">*</span></span>
+                            class="text-danger">&nbsp;*</span></span>
                     </div>
                     <input type="text" class="form-control" name="name" id="proj_name" [(ngModel)]="project.name" required>
                 </div>
@@ -34,7 +34,7 @@
             <div class="form-group col">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text text-primary">Kategorie<span
-                            class="text-danger">*</span></span></div>
+                            class="text-danger">&nbsp;*</span></span></div>
                     <input type="text" class="form-control" name="category" id="proj_category" [(ngModel)]="project.category" required>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             <div class="form-group col">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text text-primary">Začátek<span
-                            class="text-danger">*</span></span></div>
+                            class="text-danger">&nbsp;*</span></span></div>
                     <input type="date" class="form-control" name="start" id="proj_start" [(ngModel)]="project.start" required>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <div class="form-group col">
                 <div class="input-group">
                     <div class="input-group-prepend"><span class="input-group-text text-primary">Konec<span
-                            class="text-danger">*</span></span></div>
+                            class="text-danger">&nbsp;*</span></span></div>
                     <input type="date" class="form-control" name="end" id="proj_end" [(ngModel)]="project.end" required>
                 </div>
             </div>
@@ -58,15 +58,18 @@
 
 
         <div class="card">
-            <h3 class="card-header text-primary">Popis projektu</h3>
+            <h5 class="card-header text-primary">Popis projektu</h5>
             <div class="card-body">
                 <textarea name="description" id="" [(ngModel)]="project.description"></textarea>
             </div>
         </div>
 
-        <button id="addPos" type="button" class="btn btn-primary float-right" data-toggle="modal"
+        <div class="float-right">
+            <span class="text-danger" id="addOnePos" [hidden]="positions.length > 0">*&nbsp;</span>
+            <button id="addPos" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#addPositionModal">Přidat pozici
-        </button>
+            </button>
+        </div>
         <table class="table table-bordered">
             <thead class="thead-light">
             <tr>
@@ -84,7 +87,7 @@
                 <td>{{pos.description}}</td>
                 <td>0/{{pos.capacity}}</td>
                 <td>
-                    <button class="btn btn-danger" (click)="deletePosition(pos.id)"><i class="fas fa-trash-alt"></i>
+                    <button class="btn btn-danger" (click)="deletePosition(pos.id)" type="button"><i class="fas fa-trash-alt"></i>
                     </button>
                 </td>
             </tr>
@@ -104,7 +107,7 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label for="position" class="col-form-label">Pozice<span
-                                            class="text-danger">*</span></label>
+                                            class="text-danger">&nbsp;*</span></label>
                                     <input type="text" class="form-control" id="position" formControlName="position"
                                            name="name" required>
                                 </div>
@@ -114,7 +117,7 @@
                                               formControlName="description"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="count">Požadovaný počet lidí<span class="text-danger">*</span></label>
+                                    <label for="count">Požadovaný počet lidí<span class="text-danger">&nbsp;*</span></label>
                                     <input type="number" class="form-control" min="1" value="1" id="count"
                                            name="capacity" formControlName="count" required>
                                 </div>
@@ -130,6 +133,6 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-success float-right">Založit projekt</button>
+        <button type="submit" class="btn btn-success float-right btn-lg" [disabled]="!projectForm.valid || positions.length == 0">Založit projekt</button>
     </form>
 </div>
