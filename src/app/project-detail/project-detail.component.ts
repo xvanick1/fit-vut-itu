@@ -26,9 +26,10 @@ export class ProjectDetailComponent implements OnInit {
       this.project.id = +params['id'];
     });
 
+
     for (let project of this.projects) {
-      if (project.id === this.project.id) {
-        project = this.project;
+      if (project.id === 2) {
+        this.project = project;
       }
     }
 
