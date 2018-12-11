@@ -42,5 +42,6 @@ export class CreateComponent extends ProjectFormComponent implements OnInit {
         this.project.positions = this.positions;
         this.project.author = this.userService.userArray.find(user => user.login === localStorage.getItem('login'));
         this.projects.projectsArray.push(this.project);
+        this.router.navigate(['moje-projekty']);
     }
 }

@@ -37,6 +37,39 @@
     }
   }
 
+  table {
+    td, th {
+      vertical-align: middle;
+    }
+    .id {
+      width: 5%;
+      text-align: center;
+    }
+
+    .position {
+      width: 25%;
+    }
+
+    .description {
+      width: 54%;
+    }
+
+    .count {
+      width: 9%;
+      text-align: center;
+    }
+
+    .remove {
+      width: 7%;
+      text-align: center;
+    }
+  }
+
+  .pos-list{
+    margin-top: 30px;
+  }
+
+
 
   #addPos{
     margin-top: 30px;

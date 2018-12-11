@@ -43,6 +43,7 @@ export class ProjectService {
               let position = new Position();
               position.capacity = 5;
               position.name = 'Programátor';
+              position.id = 1;
               project.positions.push(position);
           } else if ( this.projectID % 3 === 1) {
 
@@ -50,6 +51,7 @@ export class ProjectService {
               let position = new Position();
               position.capacity = 1;
               position.name = 'Název pozice';
+              position.id = 1;
               project.positions.push(position);
               project.author = this.userService.userArray.find(user => user.login === '196192');
           } else {
@@ -57,6 +59,7 @@ export class ProjectService {
               let position = new Position();
               position.capacity = 2;
               position.name = 'CAD systémy';
+              position.id = 1;
               project.positions.push(position);
               project.author = this.userService.userArray.find(user => user.login === '196193');
           }

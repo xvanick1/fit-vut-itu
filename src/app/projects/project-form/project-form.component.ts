@@ -5,6 +5,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ProjectService} from '../../_service/project.service';
 import {UserService} from '../../_service/user.service';
 import {Router} from '@angular/router';
+import {Category} from '../../_model/category';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-project-form',
@@ -34,6 +36,7 @@ export class ProjectFormComponent implements OnInit {
     initModal() {
         this.position = new Position();
         this.positionForm.reset();
+        this.positionForm.get('count').setValue(1);
     }
 
     addPosition() {
@@ -55,6 +58,38 @@ export class ProjectFormComponent implements OnInit {
         }
     }
 
-    onSubmit(){}
+    setCategory(value: any) {
+        console.log(value);
+        if (!value.valid)
+            return;
+        for (let cat of this.projects.catageryArray) {
+            if (cat.id === +value.value) {
+                this.categ = cat;
+                console.log(this.project.category);
+                break;
+            }
+        }
+    }
+
+    compareFn(c1: Category, c2: Category): boolean {
+        return c1 && c2 ? c1.id === c2.id : c1 === c2;
+    }
+
+    startDate(value: any) {
+        if (!value.valid) {
+            return;
+        }
+        this.project.start = moment(value.value).toDate();
+    }
+
+    endDate(value: any) {
+        if (!value.valid) {
+            return;
+        }
+        this.project.end = moment(value.value).toDate();
+    }
+
+    onSubmit() {
+    }
 
 }

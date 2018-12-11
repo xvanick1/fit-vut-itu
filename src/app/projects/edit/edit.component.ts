@@ -6,6 +6,7 @@ import {Project} from '../../_model/project';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import * as moment from 'moment';
+import {Category} from '../../_model/category';
 
 @Component({
     selector: 'app-edit',
@@ -14,6 +15,7 @@ import * as moment from 'moment';
 })
 export class EditComponent extends ProjectFormComponent implements OnInit {
     title = 'Upravit projekt';
+    categ: Category;
 
     constructor(protected projects: ProjectService,
                 protected userService: UserService,
@@ -34,9 +36,6 @@ export class EditComponent extends ProjectFormComponent implements OnInit {
                 break;
             }
         }
-
-        this.project.start = new Date(moment(this.project.start).format('YYYY-MM-DD'));
-
         console.log(this.project.start);
 
         this.positions = this.project.positions;
@@ -47,14 +46,17 @@ export class EditComponent extends ProjectFormComponent implements OnInit {
             }
         );
 
-        this.id = this.positions.length;
+        this.id = this.positions.length + 1;
         this.initModal();
     }
 
     onSubmit() {
-        console.log(this.projects.projectsArray);
+        //this.project.category = this.categ;
+        console.log(this.project.category);
+        //console.log(this.projects.catageryArray);
         this.project.positions = this.positions;
-        this.router.navigate(['projekty']);
+        this.router.navigate(['moje-projekty']);
     }
+
 
 }
