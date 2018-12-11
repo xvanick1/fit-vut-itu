@@ -6,10 +6,10 @@
         <div class="col-12 col-md-auto d-md-flex align-items-center">
             <form class="form-inline">
                 <div class="btn-group search-center" role="group" aria-label="Button group with nested dropdown">
-                    <input class="form-control search-input-button-group" type="search" placeholder="Vyhledávání" aria-label="Search">
-                    <button type="button" class="btn btn-outline-secondary">Vyhledat</button>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-outline-secondary dropdown-toggle"></button>
+                    <input [formControl]="searchInput" class="form-control search-input-button-group" type="search" placeholder="Vyhledávání" aria-label="Search">
+                    <button type="button" [disabled]="!searchInput.valid" class="btn btn-outline-secondary" (click)="onSearchButton()">Vyhledat</button>
+                    <div class="btn-group {{extendedSearchEnabled ? 'dropup' : ''}}" role="group">
+                        <button type="button" (click)="extendedSearch()" class="btn btn-outline-secondary dropdown-toggle"></button>
                     </div>
                 </div>
             </form>
@@ -17,6 +17,42 @@
         <div class="col-12 col-md d-md-flex align-items-center">
             <button type="button" class="btn btn-primary button-right" routerLink="/vytvorit">Vytvořit projekt</button>
         </div>
+    </div>
+    <div class="row" *ngIf="extendedSearchEnabled">
+        <form [formGroup]="searchFormGroup">
+            <div class="row search-center">
+                <div class="col-6 col-md">
+                    <div class="form-group">
+                        <label for="nameInput">Název</label>
+                        <input type="text" class="form-control" id="nameInput" formControlName="nameInput">
+                    </div>
+                </div>
+                <div class="col-6 col-md">
+                    <div class="form-group">
+                        <label for="authorInput">Autor</label>
+                        <input type="text" class="form-control" id="authorInput" formControlName="authorInput">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kategorie</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" formControlName="categoryInput">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="startInput">Začátek</label>
+                        <input type="date" class="form-control" id="startInput" formControlName="startInput" placeholder="yyyy-mm-dd">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="endInput">Konec</label>
+                        <input type="date" class="form-control" id="endInput" formControlName="endInput" placeholder="yyyy-mm-dd">
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="row mt-3">
         <div class="col table-responsive-md">
