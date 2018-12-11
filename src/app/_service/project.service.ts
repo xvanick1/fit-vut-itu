@@ -37,6 +37,7 @@ export class ProjectService {
           project.end = new Date();
           project.category = category;
           project.positions = [];
+          project.description = 'Description with supporting text below as a natural lead-in to additional content.';
           if (this.projectID % 3 === 0) {
               project.isPaid = true;
               project.author = this.userService.userArray.find(user => user.login === '196191');
