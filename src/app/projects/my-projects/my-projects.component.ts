@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {ProjectService} from '../../_service/project.service';
 import {Project} from '../../_model/project';
+
+declare var $: any;
 
 @Component({
   selector: 'app-my-projects',
   templateUrl: './my-projects.component.html',
   styleUrls: ['./my-projects.component.scss']
 })
-export class MyProjectsComponent implements OnInit {
+export class MyProjectsComponent implements OnInit, DoCheck {
     myProjects: Project[];
 
     constructor(
@@ -26,6 +28,12 @@ export class MyProjectsComponent implements OnInit {
                 this.myProjects.push(project);
             }
         }
+    }
+
+    ngDoCheck(): void {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
     }
 
 }

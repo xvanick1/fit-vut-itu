@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {Project} from '../_model/project';
 import {ProjectService} from '../_service/project.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 
+declare var $: any;
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements OnInit, DoCheck {
   projects: Project[];
   searchInput: FormControl;
   extendedSearchEnabled: boolean;
@@ -143,5 +144,11 @@ export class ProjectsComponent implements OnInit {
       }
       this.projects = searchedProjects;
   }
+
+    ngDoCheck(): void {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    }
 
 }

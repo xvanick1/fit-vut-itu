@@ -29,7 +29,10 @@
                     <td class="text-right">{{project._registredPositionsCount}}/{{project._positionsCount}}</td>
                     <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
                     <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
-                    <td></td>
+                    <td>
+                        <span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
+                        <span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -64,7 +67,10 @@
                     <td class="text-right"></td>
                     <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
                     <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
-                    <td></td>
+                    <td>
+                        <span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
+                        <span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>

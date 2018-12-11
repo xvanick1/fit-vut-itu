@@ -26,8 +26,10 @@ export class ProjectService {
           project.end = new Date();
           project.category = category;
           if (i % 3 === 0) {
+              project.isPaid = true;
               project.author = this.userService.userArray.find(user => user.login === '196191');
           } else if ( i % 3 === 1) {
+              project.longTime = true;
               project.author = this.userService.userArray.find(user => user.login === '196192');
           } else {
               project.author = this.userService.userArray.find(user => user.login === '196193');
