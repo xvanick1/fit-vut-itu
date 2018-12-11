@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProjectService} from '../_service/project.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -9,6 +10,7 @@ export class ProjectDetailComponent implements OnInit {
   positions: Position[];
 
   constructor(
+      private projectService: ProjectService
 
   ) { }
 

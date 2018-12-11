@@ -10,6 +10,7 @@
 @import "~bootstrap/scss/utilities/text";
 @import "~bootstrap/scss/breadcrumb";
 @import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/tooltip";
 
 @include media-breakpoint-down(sm) {
   :host .button-right {
