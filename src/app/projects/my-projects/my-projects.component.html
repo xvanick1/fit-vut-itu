@@ -23,10 +23,10 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let project of myProjects">
-                    <td>{{project.id}}</td>
+                    <td><a routerLink="/detailprojektu/{{project.id}}">{{project.id}}</a>
                     <td>{{project.name}}</td>
                     <td>{{project.category.name}}</td>
-                    <td class="text-right">{{project._registredPositionsCount}}/{{project._positionsCount}}</td>
+                    <td class="text-right"><span data-toggle="tooltip" data-placement="bottom" title="Počet obsazených pozic">{{project._registredPositionsCount}}</span>/<span data-toggle="tooltip" data-placement="bottom" title="Celkový počet pozic">{{project._positionsCount}}</span></td>
                     <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
                     <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
                     <td>
@@ -59,8 +59,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let project of myProjects">
-                    <td>{{project.id}}</td>
+                <tr *ngFor="let project of registredProjects">
+                    <td><a routerLink="/detailprojektu/{{project.id}}">{{project.id}}</a>
                     <td>{{project.name}}</td>
                     <td>{{project.category.name}}</td>
                     <td>{{project.author.name}}</td>

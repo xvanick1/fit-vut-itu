@@ -6,7 +6,7 @@
         <div class="col-12 col-md-auto d-md-flex align-items-center">
             <form class="form-inline">
                 <div class="btn-group search-center" role="group" aria-label="Button group with nested dropdown">
-                    <input [formControl]="searchInput" class="form-control search-input-button-group" type="search" placeholder="Vyhledávání" aria-label="Search">
+                    <input [formControl]="searchInput" class="form-control search-input-button-group" type="search" placeholder="Vyhledat dle názvu" aria-label="Search">
                     <button type="button" [disabled]="!searchInput.valid" class="btn btn-outline-secondary" (click)="onSearchButton()">Vyhledat</button>
                     <div class="btn-group {{extendedSearchEnabled ? 'dropup' : ''}}" role="group">
                         <button type="button" (click)="extendedSearch()" class="btn btn-outline-secondary dropdown-toggle">Pokročilé</button>
@@ -27,16 +27,16 @@
                         <input type="text" class="form-control" id="nameInput" formControlName="nameInput">
                     </div>
                 </div>
-                <div class="col-6 col-md">
-                    <div class="form-group">
-                        <label for="authorInput">Autor</label>
-                        <input type="text" class="form-control" id="authorInput" formControlName="authorInput">
-                    </div>
-                </div>
                 <div class="col-4 col-md">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kategorie</label>
                         <input type="text" class="form-control" id="exampleInputEmail1" formControlName="categoryInput">
+                    </div>
+                </div>
+                <div class="col-6 col-md">
+                    <div class="form-group">
+                        <label for="authorInput">Autor</label>
+                        <input type="text" class="form-control" id="authorInput" formControlName="authorInput">
                     </div>
                 </div>
                 <div class="col-4 col-md">
@@ -71,11 +71,11 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let project of projects">
-                    <td>{{project.id}}</td>
+                    <td><a routerLink="/detailprojektu/{{project.id}}">{{project.id}}</a></td>
                     <td>{{project.name}}</td>
                     <td>{{project.category.name}}</td>
                     <td>{{project.author.name}}</td>
-                    <td class="text-right">{{project._registredPositionsCount}}/{{project._positionsCount}}</td>
+                    <td class="text-right"><span data-toggle="tooltip" data-placement="bottom" title="Počet obsazených pozic">{{project._registredPositionsCount}}</span>/<span data-toggle="tooltip" data-placement="bottom" title="Celkový počet pozic">{{project._positionsCount}}</span></td>
                     <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
                     <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
                     <td>

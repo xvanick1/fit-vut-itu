@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class MyProjectsComponent implements OnInit {
     myProjects: Project[];
+    registredProjects: Project[];
 
     constructor(
         private projectService: ProjectService
@@ -18,6 +19,8 @@ export class MyProjectsComponent implements OnInit {
 
     ngOnInit() {
         this.myProjects = [];
+        this.registredProjects = [];
+
         for (let project of this.projectService.projectsArray) {
             if (project.author.login === localStorage.getItem('login')) {
                 project._positionsCount = 0;
