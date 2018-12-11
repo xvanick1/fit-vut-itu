@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-12 col-md">
+            <h1>Projekty</h1>
+        </div>
+        <div class="col-12 col-md-auto d-md-flex align-items-center">
+            <form class="form-inline">
+                <div class="btn-group search-center" role="group" aria-label="Button group with nested dropdown">
+                    <input [formControl]="searchInput" class="form-control search-input-button-group" type="search" placeholder="Vyhledat dle názvu" aria-label="Search">
+                    <button type="button" [disabled]="!searchInput.valid" class="btn btn-outline-secondary" (click)="onSearchButton()">Vyhledat</button>
+                    <div class="btn-group {{extendedSearchEnabled ? 'dropup' : ''}}" role="group">
+                        <button type="button" (click)="extendedSearch()" class="btn btn-outline-secondary dropdown-toggle">Pokročilé</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12 col-md d-md-flex align-items-center">
+            <button type="button" class="btn btn-primary button-right" routerLink="/vytvorit">Vytvořit projekt</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="extendedSearchEnabled">
+        <form [formGroup]="searchFormGroup">
+            <div class="row search-center">
+                <div class="col-6 col-md">
+                    <div class="form-group">
+                        <label for="nameInput">Název</label>
+                        <input type="text" class="form-control" id="nameInput" formControlName="nameInput">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Kategorie</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" formControlName="categoryInput">
+                    </div>
+                </div>
+                <div class="col-6 col-md">
+                    <div class="form-group">
+                        <label for="authorInput">Autor</label>
+                        <input type="text" class="form-control" id="authorInput" formControlName="authorInput">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="startInput">Začátek</label>
+                        <input type="date" class="form-control" id="startInput" formControlName="startInput" placeholder="yyyy-mm-dd">
+                    </div>
+                </div>
+                <div class="col-4 col-md">
+                    <div class="form-group">
+                        <label for="endInput">Konec</label>
+                        <input type="date" class="form-control" id="endInput" formControlName="endInput" placeholder="yyyy-mm-dd">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row mt-3">
+        <div class="col table-responsive-md">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Název</th>
+                    <th scope="col">Kategorie</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col" class="text-right">Členové</th>
+                    <th scope="col">Začátek</th>
+                    <th scope="col">Konec</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of projects">
+                    <td><a routerLink="/detailprojektu/{{project.id}}">{{project.id}}</a></td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.category.name}}</td>
+                    <td>{{project.author.name}}</td>
+                    <td class="text-right"><span data-toggle="tooltip" data-placement="bottom" title="Počet obsazených pozic">{{project._registredPositionsCount}}</span>/<span data-toggle="tooltip" data-placement="bottom" title="Celkový počet pozic">{{project._positionsCount}}</span></td>
+                    <td>{{project.start | date: 'yyyy-MM-dd'}}</td>
+                    <td>{{project.end | date: 'yyyy-MM-dd'}}</td>
+                    <td>
+                        <span class="badge badge-success" *ngIf="project.longTime" data-toggle="tooltip" data-placement="bottom" title="Dlouhodobý">D</span>
+                        <span class="badge badge-warning" *ngIf="project.isPaid" data-toggle="tooltip" data-placement="bottom" title="Placený">P</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

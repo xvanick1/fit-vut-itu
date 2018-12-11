@@ -1,0 +1,140 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="form-group col-md-8">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Název projektu<span
+                            class="text-danger">&nbsp;*</span></span>
+                    </div>
+                    <input type="text" class="form-control" name="name" id="proj_name" [(ngModel)]="project.name" required>
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Tagy</span></div>
+                    <div class="tags">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="isPaid" [(ngModel)]="project.isPaid"
+                                   name="isPaid">
+                            <label class="form-check-label" for="isPaid">Placený</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="longTime" [(ngModel)]="project.longTime"
+                                   name="longTime">
+                            <label class="form-check-label" for="longTime">Dlouhodobý</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Kategorie<span
+                            class="text-danger">&nbsp;*</span></span></div>
+                    <select [compareWith]="compareFn" class="form-control" id="proj_category" [(ngModel)]="project.category" #category="ngModel" name="category" required>
+                        <option *ngFor="let cat of projects.catageryArray" [ngValue]="cat">{{cat.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Začátek<span
+                            class="text-danger">&nbsp;*</span></span></div>
+                    <input type="date" class="form-control" name="start" id="proj_start" [ngModel]="project.start | date:'yyyy-MM-dd'" (ngModelChange)="startDate(start)" #start="ngModel" required>
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <div class="input-group">
+                    <div class="input-group-prepend"><span class="input-group-text text-primary">Konec<span
+                            class="text-danger">&nbsp;*</span></span></div>
+                    <input type="date" class="form-control" name="end" id="proj_end" [ngModel]="project.end | date:'yyyy-MM-dd'" (ngModelChange)="endDate(end)" #end="ngModel" required>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="card">
+            <h5 class="card-header text-primary">Popis projektu</h5>
+            <div class="card-body">
+                <textarea name="description" id="" [(ngModel)]="project.description"></textarea>
+            </div>
+        </div>
+
+        <div class="float-right">
+            <span class="text-danger" id="addOnePos" [hidden]="positions.length > 0">*&nbsp;</span>
+            <button id="addPos" type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#addPositionModal">Přidat pozici
+            </button>
+        </div>
+
+        <h3 class="pos-list">Seznam pozic</h3>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th class="position">Pozice</th>
+                <th class="description">Popis</th>
+                <th class="count">Počet</th>
+                <th class="remove"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pos of positions">
+                <td class="position">{{pos.name}}</td>
+                <td class="description">{{pos.description}}</td>
+                <td class="count">0/{{pos.capacity}}</td>
+                <td class="remove">
+                    <button class="btn btn-danger" (click)="deletePosition(pos.id)" type="button"><i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <div class="modal fade" id="addPositionModal" tabindex="-1" role="dialog"
+                 aria-labelledby="addPositionModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="addPositionModalLabel">Nová pozice</h3>
+                        </div>
+                        <form (ngSubmit)="addPosition()" [formGroup]="positionForm">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="position" class="col-form-label">Název pozice<span
+                                            class="text-danger">&nbsp;*</span></label>
+                                    <input type="text" class="form-control" id="position" formControlName="position"
+                                           name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description" class="col-form-label">Popis pozice</label>
+                                    <textarea maxlength="100" class="form-control" id="description"
+                                              formControlName="description" placeholder="Zde popište náplň, požadavky a kompetence pozice."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="count">Požadovaný počet lidí<span class="text-danger">&nbsp;*</span></label>
+                                    <input type="number" class="form-control" min="1" id="count"
+                                           name="capacity" formControlName="count" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zrušit</button>
+                                <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#addPositionModal" [disabled]="!positionForm.valid">Přidat
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success float-right btn-lg" [disabled]="!projectForm.valid || positions.length == 0">Založit projekt</button>
+    </form>
+</div>
