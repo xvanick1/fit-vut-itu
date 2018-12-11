@@ -18,6 +18,7 @@ import { ProjectDetailComponent } from './project-detail/project-detail.componen
 import { MyProjectsComponent } from './projects/my-projects/my-projects.component';
 import {UserService} from './_service/user.service';
 import { ProjectFormComponent } from './projects/project-form/project-form.component';
+import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './projects/create/create.component';
 import { EditComponent } from './projects/edit/edit.component';
 
@@ -30,6 +31,7 @@ import { EditComponent } from './projects/edit/edit.component';
     ProjectDetailComponent,
     MyProjectsComponent,
     ProjectFormComponent,
+    HomeComponent,
     CreateComponent,
     EditComponent
   ],
