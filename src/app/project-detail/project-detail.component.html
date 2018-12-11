@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-12 col-md">
+            <h1>Detail projektu</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">ID</li>
+                    <li class="breadcrumb-item active">1234</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Název</li>
+                    <li class="breadcrumb-item active">Data mining</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Autor</li>
+                    <li class="breadcrumb-item active">Janko Mrkvička</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Kategorie</li>
+                    <li class="breadcrumb-item active">Magie a kouzla</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-2">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Tagy</li>
+                    <li class="breadcrumb-item active"><span class="badge badge-success" tooltip="Finančně ohodnoceno">€</span> <span class="badge badge-info" tooltip="Možnost uznání jako semestrální projekt">Bc</span></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Začátek</li>
+                    <li class="breadcrumb-item active">YYYY-MM-DD</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item text-primary">Konec</li>
+                    <li class="breadcrumb-item active">YYYY-MM-DD</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="card border-primary mb-3">
+        <h5 class="card-header text-white bg-primary">Popis</h5>
+        <div class="card-body">
+            <p class="card-text">Data mining je analytická metodologie získávání netriviálních skrytých a potenciálně užitečných informací z dat. Někdy se chápe jako analytická součást dobývání znalostí z databází, jindy se tato dvě označení chápou jako souznačná. Data mining se používá v komerční sféře (například v marketingu při rozhodování, které klienty oslovit dopisem s nabídkou produktu), ve vědeckém výzkumu (například při analýze genetické informace) i v jiných oblastech (například při monitorování aktivit na internetu s cílem odhalit činnost potenciálních škůdců a teroristů).</p>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col table-responsive-md">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Pozice</th>
+                    <th scope="col">Popis</th>
+                    <th scope="col">Členové</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let position of positions">
+                    <td>{{project.id}}</td>
+                    <td>{{project.position}}</td>
+                    <td>{{project.description}}</td>
+                    <td>???</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

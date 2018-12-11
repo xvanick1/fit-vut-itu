@@ -10,22 +10,22 @@ import {Project} from '../../_model/project';
 export class MyProjectsComponent implements OnInit {
     myProjects: Project[];
 
-  constructor(
-      private projectService: ProjectService
-  ) { }
+    constructor(
+        private projectService: ProjectService
+    ) { }
 
-  ngOnInit() {
-      this.myProjects = [];
-      for (let project of this.projectService.projectsArray) {
-          if (project.author.login === localStorage.getItem('login')) {
-              project._positionsCount = 0;
-              project._registredPositionsCount = 0;
-              for (const position of project.positions) {
-                  project._positionsCount += position.capacity;
-              }
-              this.myProjects.push(project);
-          }
-      }
-  }
+    ngOnInit() {
+        this.myProjects = [];
+        for (let project of this.projectService.projectsArray) {
+            if (project.author.login === localStorage.getItem('login')) {
+                project._positionsCount = 0;
+                project._registredPositionsCount = 0;
+                for (const position of project.positions) {
+                    project._positionsCount += position.capacity;
+                }
+                this.myProjects.push(project);
+            }
+        }
+    }
 
 }
