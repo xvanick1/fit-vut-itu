@@ -13,7 +13,6 @@ import { ProjectsComponent } from './projects/projects.component';
 
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProjectService} from './_service/project.service';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 import { MyProjectsComponent } from './projects/my-projects/my-projects.component';
 import {UserService} from './_service/user.service';
@@ -25,7 +24,6 @@ import { ProjectFormComponent } from './projects/project-form/project-form.compo
     HeaderComponent,
     ProjectsComponent,
     LoginComponent,
-    ProjectDetailComponent,
     MyProjectsComponent,
     ProjectFormComponent
   ],
