@@ -10,7 +10,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./project-detail.component.scss']
 })
 export class ProjectDetailComponent implements OnInit {
-  positions: Position[];
   project: Project;
 
   constructor(
